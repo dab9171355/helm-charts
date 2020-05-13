@@ -70,7 +70,7 @@ spec:
             - mountPath: /var/atlassian/application-data/jira
               name: {{ include "jira-software.pvcname" . }}
             - mountPath: /opt/atlassian/jira/atlassian-jira/WEB-INF/seraph-config.xml
-              name: seraph-config.xml
+              name: seraph-config-xml
               subPath: seraph-config.xml
           env:
             - name: JVM_MINIMUM_MEMORY
@@ -144,7 +144,7 @@ spec:
           secret:
             secretName: {{ .Values.caCerts.secret }}
         {{- end }}
-        - name: seraph-config.xml
+        - name: seraph-config-xml
           configMap:
             name: seraph-config.xml
       {{- with .Values.nodeSelector }}
