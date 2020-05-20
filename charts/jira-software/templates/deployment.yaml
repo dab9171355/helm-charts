@@ -69,6 +69,9 @@ spec:
           volumeMounts:
             - mountPath: /var/atlassian/application-data/jira
               name: {{ include "jira-software.pvcname" . }}
+            - mountPath: /opt/atlassian/jira/atlassian-jira/WEB-INF/setenv.sh
+              name: setenv-sh
+              subPath: setenv.sh
             - mountPath: /opt/atlassian/jira/atlassian-jira/WEB-INF/seraph-config.xml
               name: seraph-config-xml
               subPath: seraph-config.xml
@@ -144,6 +147,9 @@ spec:
           secret:
             secretName: {{ .Values.caCerts.secret }}
         {{- end }}
+        - name: setenv-sh
+          configMap:
+            name: setenv.sh
         - name: seraph-config-xml
           configMap:
             name: seraph-config.xml
