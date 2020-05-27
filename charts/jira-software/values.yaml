@@ -68,3 +68,9 @@ ingress:
 ##
 postgresql:
   enabled: false
+
+setenv:
+  enabled: false
+
+seraph-config-xml:
+  enabled: false
