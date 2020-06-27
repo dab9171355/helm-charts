@@ -69,16 +69,16 @@ spec:
           volumeMounts:
             - mountPath: /var/atlassian/application-data/jira
               name: {{ include "jira-software.pvcname" . }}
-            {{- if .Values.setenv.enabled }}
-            - mountPath: /opt/atlassian/jira/bin/setenv.sh
-              name: setenv-sh
-              subPath: setenv.sh
-            {{- end }}
-            {{- if .Values.seraph-config-xml.enabled }}
-            - mountPath: /opt/atlassian/jira/atlassian-jira/WEB-INF/seraph-config.xml
-              name: seraph-config-xml
-              subPath: seraph-config.xml
-            {{- end }}
+#            {{- if .Values.setenv.enabled }}
+#            - mountPath: /opt/atlassian/jira/bin/setenv.sh
+#              name: setenv-sh
+#              subPath: setenv.sh
+#            {{- end }}
+#            {{- if .Values.seraph-config-xml.enabled }}
+#            - mountPath: /opt/atlassian/jira/atlassian-jira/WEB-INF/seraph-config.xml
+#              name: seraph-config-xml
+#              subPath: seraph-config.xml
+#            {{- end }}
           env:
             - name: JVM_MINIMUM_MEMORY
               value: {{ .Values.envVars.jvmMinMemory | quote }}
@@ -151,16 +151,16 @@ spec:
           secret:
             secretName: {{ .Values.caCerts.secret }}
         {{- end }}
-        {{- if .Values.setenv.enabled }}
-        - name: setenv-sh
-          configMap:
-            name: setenv.sh
-        {{- end }}
-        {{- if .Values.seraph-config-xml.enabled }}
-        - name: seraph-config-xml
-          configMap:
-            name: seraph-config.xml
-        {{- end }}
+#        {{- if .Values.setenv.enabled }}
+#        - name: setenv-sh
+#          configMap:
+#            name: setenv.sh
+#        {{- end }}
+#        {{- if .Values.seraph-config-xml.enabled }}
+#        - name: seraph-config-xml
+#          configMap:
+#            name: seraph-config.xml
+#        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- . | toYaml | trim | nindent 8 }}
