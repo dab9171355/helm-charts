@@ -4,8 +4,9 @@ Atlassian [Confluence Server](https://www.atlassian.com/software/jira) is where 
 
 ## TL;DR:
 
-```console
-$ helm install --name my-release stable/confluence-server
+```shell
+helm repo add stevehipwell https://stevehipwell.github.io/helm-charts/
+helm install --name my-release stable/confluence-server
 ```
 
 ## Introduction
@@ -20,8 +21,8 @@ This chart bootstraps a [atlassian/confluence-server](https://hub.docker.com/r/a
 
 To install the chart with the release name `my-release`:
 
-```console
-$ helm install --name my-release stable/confluence-server
+```shell
+helm install --name my-release stevehipwell/confluence-server
 ```
 
 The command deploys _Confluence Server_ on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -32,8 +33,8 @@ The command deploys _Confluence Server_ on the Kubernetes cluster in the default
 
 To uninstall/delete the `my-release` deployment:
 
-```console
-$ helm delete my-release
+```shell
+helm delete my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -45,7 +46,7 @@ The following table lists the configurable parameters of the _Confluence Server_
 | Parameter                    | Description                                                                                        | Default                                                 |
 | ---------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `image.repository`           | Docker repository to use                                                                           | `atlassian/confluence-server`                           |
-| `image.tag`                  | Docker tag to use                                                                                  | `7.5.0`                                                 |
+| `image.tag`                  | Docker tag to use                                                                                  | `7.5.2`                                                 |
 | `image.pullPolicy`           | Docker image pull policy                                                                           | `IfNotPresent`                                          |
 | `nameOverride`               | String to partially override `confluence-server.fullname` template (will prepend the release name) | `nil`                                                   |
 | `fullnameOverride`           | String to fully override `confluence-server.fullname` template                                     | `nil`                                                   |
@@ -63,6 +64,7 @@ The following table lists the configurable parameters of the _Confluence Server_
 | `envVars.jvmMaxMemory`       | JVM maximum memory                                                                                 | `768M`                                                  |
 | `envVars.jvmMemoryOptions`   | JVM memory options                                                                                 | `-XX:MaxMetaspaceSize=512m -XX:MaxDirectMemorySize=10m` |
 | `envVars.synchronyMaxMemory` | Synchrony maximum memory                                                                           | `0m`                                                    |
+| `envVars.opts`               | Additional options, this can be used to set _CATALINA_OPTS_                                        | `""`                                                    |
 | `env`                        | List of environmental variable to apply to the deployment                                          | `nil`                                                   |
 | `persistence.enabled`        | Create a volume (PVC) for storage                                                                  | `false`                                                 |
 | `persistence.existingClaim`  | An existing PVC to use instead of creating a new one                                               | `nil`                                                   |

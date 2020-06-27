@@ -1,6 +1,6 @@
 image:
   repository: atlassian/jira-software
-  tag: 8.9.0
+  tag: 8.10.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -28,6 +28,7 @@ envVars:
   jvmMinMemory: 384M
   jvmMaxMemory: 768M
   jvmMemoryOptions: "-XX:MaxMetaspaceSize=512m -XX:MaxDirectMemorySize=10m"
+  opts: ""
 
 # env:
 #   - name: VARIABLE

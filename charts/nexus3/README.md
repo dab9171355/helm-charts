@@ -4,8 +4,9 @@ Sonatype [Nexus3](https://www.sonatype.com/nexus-repository-oss) is a free open 
 
 ## TL;DR:
 
-```console
-$ helm install stable/nexus3 --name my-release
+```shell
+helm repo add stevehipwell https://stevehipwell.github.io/helm-charts/
+helm install stevehipwell/nexus3 --name my-release
 ```
 
 ## Introduction
@@ -20,8 +21,8 @@ This chart bootstraps a [sonatype/nexus3](https://hub.docker.com/r/sonatype/nexu
 
 To install the chart with the release name `my-release`:
 
-```console
-$ helm install --name my-release stable/nexus3
+```shell
+helm install --name my-release stable/nexus3
 ```
 
 The command deploys _Nexus3_ on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -32,8 +33,8 @@ The command deploys _Nexus3_ on the Kubernetes cluster in the default configurat
 
 To uninstall/delete the `my-release` deployment:
 
-```console
-$ helm delete my-release
+```shell
+helm delete my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -45,7 +46,7 @@ The following table lists the configurable parameters of the _Nexus3_ chart and 
 | Parameter                                 | Description                                                                             | Default           |
 | ----------------------------------------- | --------------------------------------------------------------------------------------- | ----------------- |
 | `image.repository`                        | Docker repository to use                                                                | `sonatype/nexus3` |
-| `image.tag`                               | Docker tag to use                                                                       | `3.23.0`          |
+| `image.tag`                               | Docker tag to use                                                                       | `3.24.0`          |
 | `image.pullPolicy`                        | Docker image pull policy                                                                | `IfNotPresent`    |
 | `nameOverride`                            | String to partially override `nexus3.fullname` template (will prepend the release name) | `nil`             |
 | `fullnameOverride`                        | String to fully override `nexus3.fullname` template                                     | `nil`             |

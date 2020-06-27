@@ -4,8 +4,9 @@ Atlassian [Jira Software](https://www.atlassian.com/software/jira) is built for 
 
 ## TL;DR:
 
-```console
-$ helm install stable/jira-software --name my-release
+```shell
+helm repo add stevehipwell https://stevehipwell.github.io/helm-charts/
+helm install --name my-release stevehipwell/jira-software
 ```
 
 ## Introduction
@@ -20,8 +21,8 @@ This chart bootstraps a [atlassian/jira-software](https://hub.docker.com/r/atlas
 
 To install the chart with the release name `my-release`:
 
-```console
-$ helm install --name my-release stable/jira-software
+```shell
+helm install --name my-release stable/jira-software
 ```
 
 The command deploys _Jira Software_ on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -32,8 +33,8 @@ The command deploys _Jira Software_ on the Kubernetes cluster in the default con
 
 To uninstall/delete the `my-release` deployment:
 
-```console
-$ helm delete my-release
+```shell
+helm delete my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -45,7 +46,7 @@ The following table lists the configurable parameters of the _Jira Software_ cha
 | Parameter                   | Description                                                                                    | Default                                                 |
 | --------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `image.repository`          | Docker repository to use                                                                       | `atlassian/jira-software`                               |
-| `image.tag`                 | Docker tag to use                                                                              | `8.9.0`                                                 |
+| `image.tag`                 | Docker tag to use                                                                              | `8.10.0`                                                |
 | `image.pullPolicy`          | Docker image pull policy                                                                       | `IfNotPresent`                                          |
 | `nameOverride`              | String to partially override `jira-software.fullname` template (will prepend the release name) | `nil`                                                   |
 | `fullnameOverride`          | String to fully override `jira-software.fullname` template                                     | `nil`                                                   |
@@ -61,6 +62,7 @@ The following table lists the configurable parameters of the _Jira Software_ cha
 | `envVars.jvmMinMemory`      | JVM minimum memory                                                                             | `384M`                                                  |
 | `envVars.jvmMaxMemory`      | JVM maximum memory                                                                             | `768M`                                                  |
 | `envVars.jvmMemoryOptions`  | JVM memory options                                                                             | `-XX:MaxMetaspaceSize=512m -XX:MaxDirectMemorySize=10m` |
+| `envVars.opts`              | Additional options                                                                             | `""`                                                    |
 | `env`                       | List of environmental variable to apply to the deployment                                      | `nil`                                                   |
 | `persistence.enabled`       | Create a volume (PVC) for storage                                                              | `false`                                                 |
 | `persistence.existingClaim` | An existing PVC to use instead of creating a new one                                           | `nil`                                                   |
